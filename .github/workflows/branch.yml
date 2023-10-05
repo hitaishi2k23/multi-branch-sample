@@ -1,0 +1,30 @@
+name: shell commands
+on: 
+    push:
+        branches:
+            -   '*'
+jobs:
+  run-shell-command:
+      runs-on: ubuntu-latest
+      env:
+        My_Variable: "Hello, World!"
+      steps:
+        - name: string
+          run: echo $My_Variable
+        - name: multiline scriprt
+          run: |
+            node -v
+            npm -v
+        - name: python command
+          run: |
+            import platform
+            print(platform.processor())
+          shell: python
+  run-windows-command:
+      runs-on: windows-latest
+      steps:
+        - name: Directory Powershell
+          run: Get-Location
+        - name: Directory Bash
+          run: pwd
+          shell: bash
